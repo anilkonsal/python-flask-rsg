@@ -1,0 +1,71 @@
+{% extends "layouts/base.html" %}
+{% block title %}Index{% endblock %}
+
+{% block breadcrumbs %}
+    {% if current_user.is_authenticated %}
+        <nav class="breadcrumb">
+            <a class="breadcrumb-item" href="{{ url_for('site.index') }}">Home</a>
+            <span class="breadcrumb-item active">Dashboard</span>
+        </nav>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <h1 class="page-heading">Welcome {{ current_user.name }}!</h1>
+    <br/><br/>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Batches
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-responsive table-condensed">
+                <thead>
+                    <tr>
+                        <th>S.no.</th>
+                        <th>Date</th>
+                        <th>Batch Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>6 Dec, 2016</td>
+                        <td>Banks Batch</td>
+                        <td>
+                            <i class="fa fa-2x fa-check-circle text-success v-a-middle"></i>
+                            <span class="status">Completed</span>
+                        </td>
+                        <td>Details</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>6 Dec, 2016</td>
+                        <td>Banks Batch</td>
+                        <td>
+                            <i class="fa fa-2x fa-spinner fa-spin v-a-middle" aria-hidden="true"></i>
+                            <span class="status">In Progress</span>
+                        </td>
+                        <td>Details</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>6 Dec, 2016</td>
+                        <td>Banks Batch</td>
+                        <td>
+                            <i class="fa fa-2x fa-times-circle text-danger v-a-middle"></i>
+                            <span class="status">In Progress</span>
+                        </td>
+                        <td>Details</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% else %}
+    <h1 class="page-heading">Welcome to Rosetta SIP Generator!</h1>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %} 
+{% block title %}Register{% endblock %} 
+{% import "bootstrap/wtf.html" as wtf %} 
+{% block breadcrumbs %}
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="{{ url_for('site.index') }}">Home</a>
+        <span class="breadcrumb-item active">Register</span>
+    </nav>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Register</h2>
+        <div class="well">
+            {{ wtf.quick_form(form) }}
+            <br>
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">Already registered? <a href="{{ url_for('site.login') }}">Login Here</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
